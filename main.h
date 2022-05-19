@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
+int _write(char c);
+
 /**
  * struct print - Check flags that need to be activated
  * @tp: the type to be printed
@@ -12,11 +14,16 @@
 
 typedef struct print
 {
-  char *t;
-  int (*f)(va_list);
-} print_type;
+	char *tp;
+	int (*fn)(va_list);
+} print_t;
 
 int _putchar(char c);
 int _printf(const char *format, ...);
+int print_c(va_list, valist);
+int print_s(va_list, valist);
+int print_per(__attribute__((unused))va_list valist);
+int print_i(va_list, valist);
+
 
 #endif
