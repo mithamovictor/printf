@@ -28,7 +28,7 @@ int print_s(va_list valist)
 	if (string == NULL)
 	{
 	}
-	for (i = 0; string[a] != '\0'; a++)
+	for (a = 0; string[a] != '\0'; a++)
 	{
 		_write(string[a]);
 	}
@@ -67,7 +67,7 @@ int print_i(va_list valist)
 	else
 		num = m;
 
-	for (; num / div > 9; )
+	for (; (num / div) > 9; )
 		div *= 10;
 
 	for (; div != 0; )

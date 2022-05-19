@@ -1,6 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
 
@@ -14,16 +15,16 @@ int _write(char c);
 
 typedef struct print
 {
-	char *tp;
+	char *op;
 	int (*fn)(va_list);
-} print_t;
+} op_t;
 
 int _putchar(char c);
 int _printf(const char *format, ...);
-int print_c(va_list, valist);
-int print_s(va_list, valist);
+int print_c(va_list valist);
+int print_s(va_list valist);
 int print_per(__attribute__((unused))va_list valist);
-int print_i(va_list, valist);
+int print_i(va_list valist);
 
 
 #endif

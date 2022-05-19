@@ -14,11 +14,11 @@ int _printf(const char *format, ...)
 
 	va_start(valist, format);
 
-	print_t ops[] = {
-		{"c", print_c}
-		{"s", print_s}
-		{"%", print_per}
-		{"d", print_i}
+	op_t ops[] = {
+		{"c", print_c},
+		{"s", print_s},
+		{"%", print_per},
+		{"d", print_i},
 		{"i", print_i}
 	};
 
@@ -29,11 +29,11 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			for (j = 0; ops[j].op != '\0'; j++)
+			for (j = 0; *ops[j].op != '\0'; j++)
 			{
-				if (format[i + 1] == ops[j].op)
+				if (format[i + 1] == *ops[j].op)
 				{
-					_write(ops[j].f(valist));
+					_write(ops[j].fn(valist));
 				}
 			}
 		}
@@ -42,4 +42,6 @@ int _printf(const char *format, ...)
 			_write(format[i]);
 		}
 	}
+
+	return (0);
 }
