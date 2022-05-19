@@ -28,7 +28,7 @@ int print_s(va_list valist)
 	if (string == NULL)
 	{
 	}
-	for (i = 0; strring[a] != '\0'; a++)
+	for (i = 0; string[a] != '\0'; a++)
 	{
 		_write(string[a]);
 	}

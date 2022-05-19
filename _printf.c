@@ -14,11 +14,11 @@ int _printf(const char *format, ...)
 
 	va_start(valist, format);
 
-	op_t ops[] = {
+	print_t ops[] = {
 		{"c", print_c}
 		{"s", print_s}
 		{"%", print_per}
-		{"d", print_d}
+		{"d", print_i}
 		{"i", print_i}
 	};
 
