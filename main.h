@@ -5,26 +5,21 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
-int _write(char c);
-
 /**
- * struct print - Check flags that need to be activated
- * @tp: the type to be printed
- * @fn: the function to print
+ * struct printer - structure used for printing various printf specifiers
+ * @t: format type to be printed
+ * @fn: function used for printing
  */
 
-typedef struct print
+typedef struct printer
 {
-	char *op;
+	char *t;
 	int (*fn)(va_list);
-} op_t;
+} printer_t;
 
 int _putchar(char c);
 int _printf(const char *format, ...);
-int print_c(va_list valist);
-int print_s(va_list valist);
-int print_per(__attribute__((unused))va_list valist);
-int print_i(va_list valist);
-
+int print_char(va_list c);
+int print_str(va_list s);
 
 #endif
