@@ -1,7 +1,4 @@
 #include "main.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdarg.h>
 
 /**
  * format_specifier - function that checks for list of specifiers
@@ -16,6 +13,8 @@ static int(*format_specifier(const char *format))(va_list)
 	printer_t p[] = {
 		{"c", print_char},
 		{"s", print_str},
+		{"i", print_int},
+		{"d", print_dcml},
 		{NULL, NULL}
 	};
 
@@ -26,8 +25,9 @@ static int(*format_specifier(const char *format))(va_list)
 			break;
 		}
 	}
-		return (p[j].fn);
+	return (p[j].fn);
 }
+
 /**
  * _printf - cunstomized function that prints according to specific formats
  * @format: argument types inputted for output format
@@ -35,21 +35,23 @@ static int(*format_specifier(const char *format))(va_list)
  */
 int _printf(const char *format, ...)
 {
+	/**
+	 * we create two varuiables i & J
+	 * i will be the iterator of format string
+	 * j will be a counter fo the iterations
+	 */
 	unsigned int i = 0, j = 0;
-
 	va_list valist;
-
 	int (*fn)(va_list);
 
 	if (format == NULL)
 		return (-1);
 	va_start(valist, format);
-
 	while (format[i])
 	{
 		for (; format[i] != '%' && format[i]; i++)
 		{
-			_putchar(format[i]);
+			_write(format[i]);
 			j++;
 		}
 		if (!format[i])
@@ -64,7 +66,7 @@ int _printf(const char *format, ...)
 		}
 		if (!format[i + 1])
 			return (-1);
-		_putchar(format[i]);
+		_write(format[i]);
 		j++;
 		if (format[i + 1] == '%')
 			i += 2;
